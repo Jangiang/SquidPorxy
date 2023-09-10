@@ -1,6 +1,5 @@
 sudo yum update #update OS
 sudo yum upgrade #upgrade OS
-sudo yum install -y nano #insatall nano
 sudo yum install -y squid #install Squid
 sudo yum -y install httpd-tools #install httpd-tools
 sudo service squid start #start Squid
