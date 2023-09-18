@@ -13,7 +13,6 @@ gen64() {
 }
 install_3proxy() {
     echo "installing 3proxy"
-    sudo yum update -y
 	sudo yum install -y squid 
     sudo yum -y install httpd-tools 
     sudo service squid start 
@@ -23,7 +22,7 @@ install_3proxy() {
 
 install_port() {
     echo "port add"
-    URL="https://github.com/Jangiang/SquidPorxy/blob/main/portadd.sh"
+    URL="https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/portadd.sh"
     wget -qO- $URL
     chmod +x portadd.sh
     ./portadd.sh
