@@ -1,4 +1,16 @@
-****************MAKE YOUR PROXY SERVER MORE "ANONYMOUS"*************
+#######Dữ Liệu cài Proxy squid####
+sudo yum install -y wget
+wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/squid.sh
+chmod +x squid.sh
+./squid.sh
+touch /etc/squid/passwd #create a file that will later store the username for the authentication.
+chown squid: /etc/squid/passwd #set owner for password file
+htpasswd /etc/squid/passwd giang 
+
+############## config /etc/squid/squid.conf###############
+nano /etc/squid/squid.conf
+
+************ Bảo mật không phát hiện proxy*********************
 via off
 forwarded_for off
 request_header_access Allow allow all 
@@ -30,23 +42,38 @@ request_header_access Proxy-Connection allow all
 request_header_access User-Agent allow all 
 request_header_access Cookie allow all 
 request_header_access All deny all
-***********MAKE SQUID USES OUR CONFIGURATION***********
+
+********* Đăng nhập tk mk *******
 auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/passwd
 auth_param basic children 5
 auth_param basic realm Squid Basic Authentication
 auth_param basic credentialsttl 2 hours
 acl auth_users proxy_auth REQUIRED
 http_access allow auth_users
-OPEN PORT 3128 ON FIREWALL
-sudo firewall-cmd --zone=public --add-port=3128/tcp --permanent #open port 3128
-sudo firewall-cmd --reload #reload firewall
-sudo iptables-save | grep 3128 #check if that port is openning or not
-**********************DISABLE IPv6***********************
-1. Open a terminal window.
-2. Issue the command sudo nano /etc/sysctl.conf
-3. Add the following at the bottom of the file:
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
-FIND AND EDIT THIS LINE IF YOU CAN'T USE PROXY
-http_access allow all
+
+********** Hiện IP theo tùy thích**********
+acl port2 myport 24051
+acl port3 myport 24052
+tcp_outgoing_address 2405:4803:e284:b720:3685:63a5:245c:e33f port2
+tcp_outgoing_address 2405:4803:e284:b720:805e:fe1c:0a89:846c port3
+
+********* ÁP dụng cho tất cả các port*****************
+Đổi http_access deny all thành http_access allow all
+
+############################# Add Port  #################
+firewall-cmd --zone=public --add-port=3128/tcp --permanent
+firewall-cmd --permanent --add-port=xxx/tcp
+firewall-cmd --reload
+
+########### KHỞI ĐỘNG KÈM TẮT SQUID###############
+systemctl restart squid.service
+service squid restart
+systemctl enable squid
+systemctl start squid
+systemctl restart squid
+systemctl restart network
+systemctl status squid.service
+
+############ CheK iP WAN#######
+yum install wget
+wget -O - -q https://checkip.amazonaws.com
