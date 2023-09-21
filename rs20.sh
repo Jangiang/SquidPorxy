@@ -169,8 +169,9 @@ $(awk -F "/" '{print "ifconfig enp0s3 inet6 add " $5 "/64"}' ${WORKDATA})
 EOF
 }
 echo "installing apps"
-sudo yum autoremove net-tools.x86_64
-systemctl restart NetworkManager
+yum install network-scripts -y
+sudo yum remove net-tools.x86_64
+sudo service network restart
 systemctl restart network
 yum -y install gcc net-tools bsdtar zip >/dev/null
 install_3proxy
