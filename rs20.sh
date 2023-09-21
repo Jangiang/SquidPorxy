@@ -13,6 +13,8 @@ gen64() {
 }
 install_3proxy() {
     echo "installing 3proxy"
+    	sudo yum yum autoremove net-tools.x86_64
+     	systemctl restart network
 	sudo rm -r /home/proxy-installer
 	sudo rm /etc/squid/squid.conf
 }
