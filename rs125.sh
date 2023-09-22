@@ -218,6 +218,7 @@ touch /var/lock/subsys/local
 bash ${WORKDIR}/boot_iptables.sh
 bash ${WORKDIR}/boot_ifconfig.sh
 ulimit -n 10048
+systemctl restart squid.service
 service squid restart
 firewall-cmd --reload
 EOF
