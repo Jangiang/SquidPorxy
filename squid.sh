@@ -16,10 +16,10 @@ install_3proxy() {
       	sudo yum install wget -y
      	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/sp.sh
     	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/rs100.sh
-	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/portadd.sh
+	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/portadd100.sh
 	chmod +x rs100.sh	
- 	chmod +x portadd.sh
-	./portadd.sh
+ 	chmod +x portadd100.sh
+	./portadd100.sh
 	sudo yum install -y squid 
     sudo yum -y install httpd-tools 
     sudo service squid start 
