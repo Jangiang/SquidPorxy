@@ -14,6 +14,7 @@ gen64() {
 install_3proxy() {
     echo "installing 3proxy"
 	sudo yum install wget -y
+     	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/ok.sh
  	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/rs50.sh
 	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/portadd50.sh
 	chmod +x portadd50.sh
