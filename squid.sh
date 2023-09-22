@@ -20,7 +20,7 @@ install_3proxy() {
 	chmod +x sp.sh
 	chmod +x rs125.sh	
  	chmod +x portadd125.sh
-	./portadd100.sh
+	./portadd125.sh
 	sudo yum install -y squid 
     sudo yum -y install httpd-tools 
     sudo service squid start 
