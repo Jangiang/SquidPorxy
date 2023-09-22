@@ -15,8 +15,8 @@ install_3proxy() {
     echo "installing 3proxy"
       	sudo yum install wget -y
      	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/sp.sh
-    	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/rs100.sh
-	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/portadd100.sh
+    	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/rs125.sh
+	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/portadd125.sh
 	chmod +x sp.sh
 	chmod +x rs100.sh	
  	chmod +x portadd100.sh
