@@ -11,10 +11,9 @@ gen64() {
 	}
 	echo "$1:$(ip64):$(ip64):$(ip64):$(ip64)"
 }
+
 install_3proxy() {
     echo "installing 3proxy"
-	sudo rm -r /home/proxy-installer
-	sudo rm /etc/rc.local
 	sudo rm /etc/squid/squid.conf
 }
 
@@ -170,10 +169,9 @@ $(awk -F "/" '{print "ifconfig enp0s3 inet6 add " $5 "/64"}' ${WORKDATA})
 EOF
 }
 echo "installing apps"
-yum remove net-tools.x86_64 -y
-service network restart
-yum install wget -y
-yum install net-tools -y
+sudo rm -r /home/proxy-installer
+sudo rm /etc/rc.local
+touch /etc/rc.local
 yum -y install gcc net-tools bsdtar zip >/dev/null
 install_3proxy
 
@@ -188,7 +186,7 @@ IP6=$(curl -6 -s icanhazip.com | cut -f1-4 -d':')
 echo "Internal ip = ${IP4}. Exteranl sub for ip6 = ${IP6}"
 
 echo "How many proxy do you want to create? Example 500"
-COUNT=50  # Set the number of proxies you want
+COUNT=20  # Set the number of proxies you want
 echo "$COUNT"
 #read COUNT
 
@@ -216,6 +214,7 @@ cat >>/etc/rc.local <<EOF
 # that this script will be executed during boot.
 
 touch /var/lock/subsys/local
+
 bash ${WORKDIR}/boot_iptables.sh
 bash ${WORKDIR}/boot_ifconfig.sh
 ulimit -n 10048
