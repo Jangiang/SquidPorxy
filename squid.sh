@@ -30,6 +30,13 @@ install_3proxy() {
 	sudo rm /etc/squid/squid.conf
 }
 
+yum install -y gcc
+yum install -y net-tools
+yum install -y bsdtar
+yum install -y zip
+yum install -y firewalld
+yum install -y curl
+yum install -y nano
 
 gen_squid() {
     cat <<EOF
