@@ -17,8 +17,6 @@ install_3proxy() {
      	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/sp.sh
  	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/rs50.sh
 	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/portadd50.sh
- 	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/portadd20.sh
- 	chmod +x sp.sh
  	chmod +x sp.sh
    	chmod +x rs50.sh	
     	chmod +x portadd50.sh
