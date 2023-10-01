@@ -75,7 +75,7 @@ http_access allow localnet
 http_access allow localhost
 
 # And finally deny all other access to this proxy
-http_access den all
+http_access allow all
 
 # Squid normally listens to port 3128
 http_port 3128
