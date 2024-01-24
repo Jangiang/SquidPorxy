@@ -14,6 +14,8 @@ gen64() {
 install_3proxy() {
     echo "installing 3proxy"
       	sudo yum install wget -y
+       firewall-cmd --zone=public --add-port=3128/tcp --permanent
+       firewall-cmd --reload
      	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/sp.sh
     	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/rs.sh
 	wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/portadd125.sh
