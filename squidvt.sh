@@ -15,6 +15,8 @@ install_3proxy() {
     echo "installing 3proxy"
       	sudo yum install wget -y
 	sudo yum install -y squid 
+ wget https://raw.githubusercontent.com/Jangiang/SquidPorxy/main/rl.sh
+ chmod +x rl.sh
     sudo yum -y install httpd-tools 
     firewall-cmd --zone=public --add-port=3128/tcp --permanent
     sudo service squid start 
